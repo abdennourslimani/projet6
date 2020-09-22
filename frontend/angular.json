@@ -157,5 +157,8 @@
       }
     }
   },
-  "defaultProject": "the-hottest-reviews"
+  "defaultProject": "the-hottest-reviews",
+  "cli": {
+    "analytics": "150e8f3d-0263-48fc-a177-84ea62254ca8"
+  }
 }
