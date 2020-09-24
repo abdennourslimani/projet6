@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
+const helmet = require('helmet')
+const dontenv = require('dotenv').config()
 
 
 const path = require('path');
@@ -11,7 +13,7 @@ const app = express();
 
 
 
-mongoose.connect('mongodb+srv://adinoutech:salam2020@cluster0.1haib.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect(process.env.DBACCESS, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
@@ -32,6 +34,8 @@ app.use(bodyParser.json());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
+app.use(helmet());
+
 
 
 module.exports = app;
